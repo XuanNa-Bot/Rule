@@ -10,12 +10,13 @@ http-request ^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ re
 # > vsco
 http-response ^https:\/\/api\.revenuecat\.com\/v\d\/subscribers\/\d+$ script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/vsco.js, requires-body=true, tag=VSCO
 
-# > JD App 显示历史价格 by yichahucha
-jd_price.js = type=http-response,requires-body=1,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js, tag=JD App 显示历史价格
+# > JD App 显示历史价格
+http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=JD App 显示历史价格
+
 
 # > Taobao App 显示历史价格 by yichahucha
-tb_price.js = type=http-request,requires-body=1,pattern=^http:\/\/.+\/amdc\/mobileDispatch,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js, tag=Taobao App 显示历史价格
-tb_price.js = type=http-response,requires-body=1,pattern=^https?:\/\/trade-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.detail\.getdetail,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js, tag=Taobao App 显示历史价格
+http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=Taobao App 显示历史价格
+http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=Taobao App 显示历史价格
 
 # 去微信公众号广告 (By Choler)
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js, tag=J去微信公众号广告
